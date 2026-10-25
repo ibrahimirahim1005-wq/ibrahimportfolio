@@ -395,6 +395,21 @@ html.lenis {
     visibility: visible !important;
   }
 
+  #printable-resume > div {
+    page-break-after: always;
+    break-after: page;
+    background: #ffffff !important;
+    color: #0f172a !important;
+    border: none !important;
+    box-shadow: none !important;
+    padding: 0 !important;
+  }
+
+  #printable-resume > div:last-child {
+    page-break-after: auto;
+    break-after: auto;
+  }
+
   @page {
     margin: 1.2cm;
     size: A4 portrait;

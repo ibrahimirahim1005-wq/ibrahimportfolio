@@ -13,6 +13,7 @@ import {
   Github,
   Linkedin,
   Mail,
+  Eye,
 } from 'lucide-react';
 import { motion } from 'motion/react';
 import { PERSONAL_INFO, SKILLS, FEATURED_PROJECT, SOCIAL_LINKS } from '../data/portfolioData';
@@ -40,6 +41,8 @@ export const Hero: React.FC<HeroProps> = ({ onOpenResume, onOpenPhoto, customPho
       }
     }
   };
+
+
 
   const scrollToAbout = (e?: React.MouseEvent) => {
     if (e) e.preventDefault();
@@ -118,13 +121,14 @@ export const Hero: React.FC<HeroProps> = ({ onOpenResume, onOpenPhoto, customPho
                   <ArrowRight className="w-4 h-4 stroke-[2.5]" />
                 </a>
 
-                {/* Secondary "DOWNLOAD RESUME" Button */}
+                {/* Primary "VIEW FULL RESUME" Button */}
                 <button
                   onClick={onOpenResume}
-                  className="px-5 py-2.5 sm:px-6 sm:py-3 bg-transparent hover:bg-slate-800/80 text-white border border-slate-700 hover:border-cyan-400 font-mono text-xs sm:text-sm font-bold tracking-wider uppercase flex items-center gap-2 transition-all cursor-pointer hover:shadow-[0_0_15px_rgba(6,182,212,0.25)]"
+                  className="px-5 py-2.5 sm:px-6 sm:py-3 bg-[#06b6d4] hover:bg-[#22d3ee] text-slate-950 font-mono text-xs sm:text-sm font-black tracking-wider uppercase flex items-center gap-2 transition-all shadow-[0_0_20px_-2px_rgba(6,182,212,0.4)] hover:shadow-[0_0_25px_rgba(6,182,212,0.6)] active:translate-y-0.5 cursor-pointer"
+                  title="Open responsive full-page resume viewer"
                 >
-                  <FileText className="w-4 h-4 text-[#22d3ee]" />
-                  <span>DOWNLOAD RESUME</span>
+                  <Eye className="w-4 h-4 stroke-[2.5]" />
+                  <span>VIEW FULL RESUME</span>
                 </button>
               </div>
 

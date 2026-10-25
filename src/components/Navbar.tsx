@@ -152,7 +152,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenResume, activeSection }) =
               className="w-full py-3 bg-[#06b6d4] hover:bg-[#22d3ee] text-slate-950 font-mono text-xs font-bold tracking-wider uppercase flex items-center justify-center gap-2 shadow-[0_0_15px_rgba(6,182,212,0.4)] cursor-pointer"
             >
               <FileText className="w-4 h-4 stroke-[2.5]" />
-              <span>Download / View Resume PDF</span>
+              <span>View Full Resume</span>
             </button>
           </div>
         </div>
