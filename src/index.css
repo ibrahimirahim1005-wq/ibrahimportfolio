@@ -1,0 +1,405 @@
+@import "tailwindcss";
+
+:root {
+  --bg: #020617;         /* slate-950: page background, same as the lamp */
+  --surface: #0f172a;    /* slate-900: cards, navbar */
+  --border: #1e293b;     /* slate-800 */
+  --text: #e2e8f0;       /* slate-200: body text */
+  --text-muted: #94a3b8; /* slate-400 */
+  --accent: #06b6d4;     /* cyan-500: lamp beams, buttons, links */
+  --accent-light: #22d3ee; /* cyan-400: lamp glow line, hover states */
+}
+
+@layer base {
+  body {
+    font-family: 'Outfit', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    background-color: var(--bg);
+    color: var(--text);
+  }
+  
+  h1, h2, h3, h4, .font-display {
+    font-family: 'Space Grotesk', -apple-system, BlinkMacSystemFont, sans-serif;
+  }
+  
+  code, pre, .font-mono {
+    font-family: 'Fira Code', monospace;
+  }
+}
+
+/* Heading gradient from #cbd5e1 to #64748b */
+.heading-gradient {
+  background: linear-gradient(135deg, #cbd5e1 0%, #64748b 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Soft cyan glow on hover (box-shadow with rgba(6,182,212,0.4)) */
+.hover-cyan-glow {
+  transition: all 0.3s ease;
+}
+.hover-cyan-glow:hover {
+  box-shadow: 0 0 20px -2px rgba(6, 182, 212, 0.4);
+  border-color: var(--accent);
+}
+
+.cyan-glow {
+  box-shadow: 0 0 20px -2px rgba(6, 182, 212, 0.4);
+}
+
+.cyan-glow-sm {
+  box-shadow: 0 0 12px -2px rgba(6, 182, 212, 0.35);
+}
+
+/* Floating Animations for Hero Skill Badges */
+@keyframes floatSlow {
+  0%, 100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-8px) rotate(1deg);
+  }
+}
+
+@keyframes floatMedium {
+  0%, 100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-12px) rotate(-1.5deg);
+  }
+}
+
+@keyframes floatReverse {
+  0%, 100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  50% {
+    transform: translateY(10px) rotate(1deg);
+  }
+}
+
+.animate-float-slow {
+  animation: floatSlow 6s ease-in-out infinite;
+}
+
+.animate-float-medium {
+  animation: floatMedium 5s ease-in-out infinite 0.5s;
+}
+
+.animate-float-reverse {
+  animation: floatReverse 7s ease-in-out infinite 1s;
+}
+
+/* Slate subtle grid */
+.slate-grid {
+  background-size: 48px 48px;
+  background-image: 
+    linear-gradient(to right, rgba(255, 255, 255, 0.02) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
+}
+
+/* Square Edge Cards & Borders matching --surface and --border */
+.sharp-card {
+  background-color: var(--surface);
+  border: 1px solid var(--border);
+  transition: all 0.25s ease;
+}
+
+.sharp-card:hover {
+  border-color: var(--accent);
+  box-shadow: 0 0 20px -2px rgba(6, 182, 212, 0.4);
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 7px;
+}
+::-webkit-scrollbar-track {
+  background: var(--bg);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--border);
+  border-radius: 0px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--accent);
+}
+
+/* Continuous Tech Stack Pipeline Stream Marquee */
+@keyframes pipelineMarquee {
+  0% {
+    transform: translate3d(0, 0, 0);
+  }
+  100% {
+    transform: translate3d(-50%, 0, 0);
+  }
+}
+
+.animate-pipeline-stream {
+  display: flex;
+  width: max-content;
+  animation: pipelineMarquee 38s linear infinite;
+  will-change: transform;
+}
+
+.animate-pipeline-stream:hover {
+  animation-play-state: paused;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-pipeline-stream {
+    animation: none;
+    overflow-x: auto;
+  }
+}
+
+/* Gentle Fade-In Animation for Section Endings */
+@keyframes gentleFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-gentle-fade-in {
+  animation: gentleFadeIn 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-gentle-fade-in {
+    animation: none;
+    opacity: 1;
+    transform: none;
+  }
+}
+
+/* Spider idle breathing and gentle sway */
+@keyframes spiderIdle {
+  0%, 100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-2px) rotate(1deg);
+  }
+}
+
+.animate-spider-idle {
+  animation: spiderIdle 3.5s ease-in-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-spider-idle {
+    animation: none !important;
+  }
+}
+
+/* ========================================================
+   CINEMATIC SMOOTH SCROLL (LENIS ENGINE INTEGRATION)
+   ======================================================== */
+html.lenis,
+html.lenis body {
+  height: auto;
+}
+
+html.lenis {
+  scroll-behavior: auto !important;
+}
+
+.lenis:not(.lenis-autoToggle).lenis-stopped {
+  overflow: clip;
+}
+
+.lenis [data-lenis-prevent],
+.lenis [data-lenis-prevent-wheel],
+.lenis [data-lenis-prevent-touch],
+.lenis [data-lenis-prevent-vertical],
+.lenis [data-lenis-prevent-horizontal] {
+  overscroll-behavior: contain;
+}
+
+.lenis.lenis-smooth iframe {
+  pointer-events: none;
+}
+
+/* Cinematic Section Reveal Smoothing */
+.cinematic-section {
+  content-visibility: auto;
+  contain-intrinsic-size: 1px 800px;
+}
+
+/* ========================================================
+   SHINE SWEEP: METALLIC LIGHT SWEEP ACROSS HEADING
+   ======================================================== */
+.shine-sweep-heading {
+  position: relative;
+}
+
+.shine-sweep-heading::after {
+  content: attr(data-text);
+  content: attr(data-text) / "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  user-select: none;
+
+  /* Inherit exact typography to match base heading 1:1 */
+  font-family: inherit;
+  font-size: inherit;
+  font-weight: inherit;
+  letter-spacing: inherit;
+  line-height: inherit;
+  text-transform: inherit;
+
+  /* Prominent diagonal beam at 105deg: vivid cyan edges (#22d3ee / #a5f3fc), solid white core */
+  background: linear-gradient(
+    105deg,
+    transparent 0%,
+    transparent 28%,
+    rgba(165, 243, 252, 0.15) 34%,
+    rgba(34, 211, 238, 0.85) 42%,
+    #ffffff 48%,
+    #ffffff 52%,
+    rgba(34, 211, 238, 0.85) 58%,
+    rgba(165, 243, 252, 0.15) 66%,
+    transparent 72%,
+    transparent 100%
+  );
+  background-size: 200% 100%;
+  background-repeat: no-repeat;
+
+  /* Mask exclusively to letter shapes */
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+
+  /* Timing: Slow, luxurious 2.6s sweep within a 5.5s loop (2.6s sweep + 2.9s rest) */
+  /* Starts shortly after load (0.5s delay) */
+  animation: shineSweep 5.5s cubic-bezier(0.35, 0, 0.25, 1) infinite;
+  animation-delay: 0.5s;
+  background-position: 135% 0;
+}
+
+@keyframes shineSweep {
+  0% {
+    background-position: 135% 0;
+  }
+  48% {
+    background-position: -35% 0;
+  }
+  100% {
+    background-position: -35% 0;
+  }
+}
+
+/* Responsive: adjusted pacing on mobile screens (<768px) */
+@media (max-width: 768px) {
+  .shine-sweep-heading::after {
+    animation-duration: 6s;
+    opacity: 0.9;
+  }
+}
+
+/* Accessibility: Disable animation completely if prefers-reduced-motion */
+@media (prefers-reduced-motion: reduce) {
+  .shine-sweep-heading::after {
+    animation: none !important;
+    display: none !important;
+  }
+}
+/* END SHINE SWEEP */
+
+/* ========================================================
+   SECTION DIVIDER: OPTION 6 ANIMATED CYAN DIVIDER
+   ======================================================== */
+@keyframes cyanDividerTravel {
+  0% {
+    left: -120px;
+    opacity: 0;
+  }
+  4% {
+    opacity: 1;
+  }
+  96% {
+    opacity: 1;
+  }
+  100% {
+    left: calc(100% + 20px);
+    opacity: 0;
+  }
+}
+
+.divider-runner {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  animation: cyanDividerTravel 5.5s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+  will-change: left;
+}
+
+@media (max-width: 768px) {
+  .divider-runner {
+    animation-duration: 4.5s;
+  }
+}
+
+/* Accessibility: Turn off moving particle for users requesting reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .divider-runner {
+    animation: none !important;
+    display: none !important;
+  }
+}
+
+/* ========================================================
+   PRINT STYLES FOR PROFESSIONAL RESUME (PDF EXPORT)
+   ======================================================== */
+@media print {
+  body {
+    background-color: #ffffff !important;
+    color: #0f172a !important;
+  }
+
+  .no-print,
+  nav,
+  header,
+  footer,
+  main,
+  .glow-cursor-canvas {
+    display: none !important;
+  }
+
+  #printable-resume {
+    visibility: visible !important;
+    position: absolute !important;
+    left: 0 !important;
+    top: 0 !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    background: #ffffff !important;
+    color: #0f172a !important;
+    box-shadow: none !important;
+    border: none !important;
+    padding: 0 !important;
+    margin: 0 !important;
+  }
+
+  #printable-resume * {
+    visibility: visible !important;
+  }
+
+  @page {
+    margin: 1.2cm;
+    size: A4 portrait;
+  }
+}
+
+
+
