@@ -16,6 +16,8 @@ import {
 } from 'lucide-react';
 import { FEATURED_PROJECT, SOCIAL_LINKS } from '../data/portfolioData';
 import { ScrollReveal, ScrollRevealItem } from './ui/ScrollReveal';
+import footballTrophyBanner from '../assets/images/football_trophy_banner_1792410546224.jpg';
+import footballMatchAction from '../assets/images/football_match_action_1792410527030.jpg';
 
 export const ProjectSection: React.FC = () => {
   const [activeImageIndex, setActiveImageIndex] = useState(0);
@@ -29,13 +31,13 @@ export const ProjectSection: React.FC = () => {
 
   const footballImages = [
     {
-      url: '/src/assets/images/football_trophy_banner_1792410546224.jpg',
+      url: footballTrophyBanner,
       label: '🏆 Ballon d’Or Hub',
       caption: 'Golden Trophy & Holographic Sports Analytics',
       tag: 'ANALYTICS ENGINE',
     },
     {
-      url: '/src/assets/images/football_match_action_1792410527030.jpg',
+      url: footballMatchAction,
       label: '⚽ Match Action Turf',
       caption: 'Match Football with Cyan Cyberpunk Speed Trails',
       tag: 'SIMULATION PITCH',
@@ -233,6 +235,12 @@ export const ProjectSection: React.FC = () => {
                     alt={footballImages[activeImageIndex].caption}
                     referrerPolicy="no-referrer"
                     className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                    onError={(e) => {
+                      const target = e.currentTarget as HTMLImageElement;
+                      if (target.src !== footballTrophyBanner) {
+                        target.src = footballTrophyBanner;
+                      }
+                    }}
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-[#020617] via-transparent to-[#020617]/50 pointer-events-none" />
 

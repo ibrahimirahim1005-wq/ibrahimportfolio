@@ -1,4 +1,6 @@
 import { EducationInfo, ProjectInfo, SkillItem, SocialLinks, VerifiedCertificate } from '../types';
+import footballTrophyBanner from '../assets/images/football_trophy_banner_1792410546224.jpg';
+import footballMatchAction from '../assets/images/football_match_action_1792410527030.jpg';
 
 export const PERSONAL_INFO = {
   name: 'IBRAHIM.S',
@@ -67,10 +69,10 @@ export const FEATURED_PROJECT: ProjectInfo = {
   ],
   tags: ['HTML', 'CSS', 'JavaScript', 'REST API', 'Supabase'],
   liveUrl: 'https://football-zone-1.onrender.com',
-  image: '/src/assets/images/football_trophy_banner_1792410546224.jpg',
+  image: footballTrophyBanner,
   galleryImages: [
-    '/src/assets/images/football_trophy_banner_1792410546224.jpg',
-    '/src/assets/images/football_match_action_1792410527030.jpg',
+    footballTrophyBanner,
+    footballMatchAction,
   ],
   stats: [
     { label: 'Edition', value: 'Ballon d’Or 2026' },
